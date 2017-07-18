@@ -4,13 +4,13 @@ var bio = {
     "contacts": {
         "mobile": "239.250.9564",
         "email": "cdmarchante@gmail.com",
-        "github": "dmarchante",
+        "github": "https://github.com/dmarchante",
         "twitter": "@dmarchante",
         "location": "Naples, FL"
     },
     "welcomeMessage": "Hello",
     "skills": [
-        "HTML5", "CSS3", "JavaScript", "InDesign", "Photoshop", "Illustrator"
+        "HTML5", "CSS3", "Bootstrap", "JavaScript", "jQuery", "React", "InDesign", "Photoshop", "Illustrator"
     ],
     "biopic": [{
             "bioTitle": "",
@@ -25,7 +25,7 @@ var bio = {
             "bioString": ""
         }
     ],
-    display: function displaySkill() {
+    displaySkill: function displaySkill() {
         $("#header").append(HTMLskillsStart);
         for (var skill = 0; skill < bio.skills.length; skill++) {
 
@@ -37,34 +37,34 @@ var bio = {
 
 var education = {
     "schools": [{
-            "name": "UMUC",
-            "location": "MD",
-            "degree": "BS",
-            "dates": "2014-2015",
-            "websites": "www.umuc.edu"
+            "name": "University of Maryland, University College",
+            "location": "Okinawa, Japan",
+            "degree": "Bachelor of Science",
+            "majors": "Digital Media and Web Technology",
+            "dates": "2015",
         },
         {
-            "name": "PSU",
-            "location": "PA",
-            "degree": "Certificate",
-            "dates": "2016-2017",
-            "websites": ""
+            "name": "The Pennsylvania State University",
+            "location": "State College, PA",
+            "degree": "Graduate Certificate",
+            "majors": "Geographic Infromation Systems",
+            "dates": "2018",
+        },
+        {
+            "name": "The Pennsylvania State University",
+            "location": "State College, PA",
+            "degree": "Master of Professional Studies",
+            "majors": "Geodesign",
+            "dates": "2019",
         }
     ],
     "onlineCourses": [{
-            "title": "",
-            "school": "",
-            "dates": "",
-            "url": ""
-        },
-        {
-            "title": "",
-            "school": "",
-            "dates": "",
-            "url": ""
-        }
-    ],
-    displaySchool: function displayEducation() {
+        "title": "Front End Developer Nanodegree",
+        "school": "Udacity",
+        "dates": "2017",
+        "url": "www.udacity.com"
+    }],
+    displaySchool: function displayTraditionalSchools() {
         for (var school = 0; school < education.schools.length; school++) {
             $("#education").append(HTMLschoolStart);
 
@@ -77,6 +77,25 @@ var education = {
             var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
             var formattedDateLocation = formattedLocation + formattedDate;
             $(".education-entry:last").append(formattedDateLocation);
+
+            var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+            $(".education-entry:last").append(formattedMajor);
+        }
+    },
+    displayOnline: function displayOnlineSchools() {
+        for (var online = 0; online < education.onlineCourses.length; online++) {
+            $("#education").append(HTMLonlineClasses);
+
+            var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[online].title);
+            var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[online].school);
+            var formattedTitleSchool = formattedTitle + formattedSchool;
+            $(".education-entry:last").append(formattedTitleSchool);
+
+            var formattedDate = HTMLonlineDates.replace("%data%", education.onlineCourses[online].dates);
+            $(".education-entry:last").append(formattedDate);
+
+            var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[online].url);
+            $(".education-entry:last").append(formattedURL);
         }
     }
 }
@@ -136,36 +155,20 @@ var projects = {
             "title": "Project 1",
             "dates": "2014-2015",
             "descriptions": "Lorem ipsum",
-            "images": [{
-                    "img": "placeholder",
-                    "description": "Lorem Ipsum"
-                },
-                {
-                    "img": "placeholder",
-                    "description": "Lorem Ipsum"
-                },
-                {
-                    "img": "placeholder",
-                    "description": "Lorem Ipsum"
-                }
+            "images": [
+                "http://via.placeholder.com/150x150",
+                "http://via.placeholder.com/150x150",
+                "http://via.placeholder.com/150x150"
             ]
         },
         {
             "title": "Project 2",
             "dates": "2015 - 2016",
             "descriptions": "Lorem ipsum",
-            "images": [{
-                    "img": "placeholder",
-                    "description": "Lorem Ipsum"
-                },
-                {
-                    "img": "placeholder",
-                    "description": "Lorem Ipsum"
-                },
-                {
-                    "img": "placeholder",
-                    "description": "Lorem Ipsum"
-                },
+            "images": [
+                "http://via.placeholder.com/150x150",
+                "http://via.placeholder.com/150x150",
+                "http://via.placeholder.com/150x150"
             ]
         }
     ],
@@ -193,10 +196,14 @@ var projects = {
 
 var myName = HTMLheaderName.replace("%data%", bio.name);
 $("#header").append(myName);
+var myRole = HTMLheaderRole.replace("%data%", bio.role);
+$("#header").append(myRole);
 
-bio.display();
+bio.displaySkill();
 
 education.displaySchool();
+
+education.displayOnline();
 
 work.display();
 
