@@ -69,30 +69,21 @@ var bio = {
 //    return locationArray;
 //};
 
-// Did locationizer() work? This line will tell you!
-//console.log(locationizer(work));
+//if (bio.skills.length > 0) {
+//    $("#header").append(HTMLskillsStart);
 
-//function locationizer(work_obj) {
-//    var locationArray = [];
-//
-//    work_obj.jobs.forEach((job) => {
-//        var locations = job.location;
-//        locationArray.push(locations);
-//    });
-//    return locationArray;
-//}
-
-// Did locationizer() work? This line will tell you!
-//console.log(locationizer(work));
-
-//function locationizer(work_obj) {
-//    var locationArray = [];
-//
-//    work_obj.jobs.forEach(function(job) {
-//        var locations = job.location;
-//        locationArray.push(locations);
-//    });
-//    return locationArray;
+//    var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+//    $("#skills").append(formattedSkill);
+//    formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+//    $("#skills").append(formattedSkill);
+//    formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+//    $("#skills").append(formattedSkill);
+//    formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+//    $("#skills").append(formattedSkill);
+//    formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+//    $("#skills").append(formattedSkill);
+//    formattedSkill = HTMLskills.replace("%data%", bio.skills[5]);
+//    $("#skills").append(formattedSkill);
 //}
 
 // Did locationizer() work? This line will tell you!
@@ -131,3 +122,21 @@ var bio = {
 //for (country in countries) {
 //    console.log(countries[country])
 //};
+
+//function displayWork() {
+//    work.jobs.forEach(function(job) {
+//        $("#workExperience").append(HTMLworkStart);
+
+//        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+//        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+//        var formattedEmployerTitle = formattedEmployer + formattedTitle;
+//        $(".work-entry:last").append(formattedEmployerTitle);
+
+//        var formattedDate = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+//        $(".work-entry:last").append(formattedDate);
+
+//        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+//        $(".work-entry:last").append(formattedDescription);
+//    });
+//};
+//displayWork();
