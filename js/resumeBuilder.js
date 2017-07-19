@@ -12,32 +12,26 @@ var bio = {
     "skills": [
         "HTML5", "CSS3", "Bootstrap", "JavaScript", "jQuery", "React", "InDesign", "Photoshop", "Illustrator"
     ],
-    "bioPic": "http://via.placeholder.com/200x200",
+    "biopic": "http://via.placeholder.com/200x200",
     display: function displaySkillContacts() {
-        $("#header").append(HTMLskillsStart);
+        var myRole = HTMLheaderRole.replace("%data%", bio.role);
+        var myName = HTMLheaderName.replace("%data%", bio.name);
+        $("#header").prepend(myName, myRole);
+
+        var myBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+        var myWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+        $("#header").append(myBioPic, myWelcomeMsg, HTMLskillsStart);
 
         bio.skills.forEach(skill => {
             var formattedSkill = HTMLskills.replace("%data%", skill);
             $("#skills:last").append(formattedSkill);
         });
-        /*for (var skill = 0; skill < bio.skills.length; skill++) {
-
-            var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
-            $("#skills:last").append(formattedSkill);
-        }*/
 
         var myMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-        $("#topContacts").append(myMobile);
-        $("#footerContacts").append(myMobile);
         var myEmail = HTMLemail.replace("%data%", bio.contacts.email);
-        $("#topContacts").append(myEmail);
-        $("#footerContacts").append(myEmail);
         var myGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-        $("#topContacts").append(myGithub);
-        $("#footerContacts").append(myGithub);
         var myLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-        $("#topContacts").append(myLocation);
-        $("#footerContacts").append(myLocation);
+        $("#topContacts, #footerContacts").append(myMobile, myEmail, myGithub, myLocation);
     }
 };
 
@@ -46,22 +40,25 @@ var education = {
             "name": "University of Maryland, University College",
             "location": "Okinawa, Japan",
             "degree": "Bachelor of Science",
-            "majors": "Digital Media and Web Technology",
+            "majors": ["Digital Media and Web Technology"],
             "dates": "2015",
+            "url": "http://umuc.edu/"
         },
         {
             "name": "The Pennsylvania State University",
             "location": "State College, PA",
             "degree": "Graduate Certificate",
-            "majors": "Geographic Infromation Systems",
+            "majors": ["Geographic Infromation Systems"],
             "dates": "2018",
+            "url": "http://www.psu.edu/"
         },
         {
             "name": "The Pennsylvania State University",
             "location": "State College, PA",
             "degree": "Master of Professional Studies",
-            "majors": "Geodesign",
+            "majors": ["Geodesign"],
             "dates": "2019",
+            "url": "http://www.psu.edu/"
         }
     ],
     "onlineCourses": [{
@@ -77,15 +74,15 @@ var education = {
             var formattedName = HTMLschoolName.replace("%data%", school.name);
             var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
             var formattedNameDegree = formattedName + formattedDegree;
-            $(".education-entry:last").append(formattedNameDegree);
-
             var formattedSchoolDate = HTMLschoolDates.replace("%data%", school.dates);
             var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
             var formattedDateLocation = formattedLocation + formattedSchoolDate;
-            $(".education-entry:last").append(formattedDateLocation);
+            $(".education-entry:last").append(formattedNameDegree, formattedDateLocation)
 
-            var formattedMajor = HTMLschoolMajor.replace("%data%", school.majors);
-            $(".education-entry:last").append(formattedMajor);
+            school.majors.forEach(major => {
+                var formattedMajor = HTMLschoolMajor.replace("%data%", major);
+                $(".education-entry:last").append(formattedMajor);
+            });
         });
 
         education.onlineCourses.forEach(online => {
@@ -94,13 +91,9 @@ var education = {
             var formattedTitle = HTMLonlineTitle.replace("%data%", online.title);
             var formattedSchool = HTMLonlineSchool.replace("%data%", online.school);
             var formattedTitleSchool = formattedTitle + formattedSchool;
-            $(".education-entry:last").append(formattedTitleSchool);
-
             var formattedOnlineDate = HTMLonlineDates.replace("%data%", online.dates);
-            $(".education-entry:last").append(formattedOnlineDate);
-
             var formattedURL = HTMLonlineURL.replace("%data%", online.url);
-            $(".education-entry:last").append(formattedURL);
+            $(".education-entry:last").append(formattedTitleSchool, formattedOnlineDate, formattedURL);
         });
     }
 };
@@ -156,7 +149,7 @@ var work = {
 };
 
 var projects = {
-    "projectsArray": [{
+    "projects": [{
             "title": "Project 1",
             "dates": "2014-2015",
             "descriptions": "Lorem ipsum",
@@ -180,7 +173,7 @@ var projects = {
     display: function displayProjects() {
         $("#projects").append(HTMLprojectStart);
 
-        projects.projectsArray.forEach(project => {
+        projects.projects.forEach(project => {
             if (project.images.length > 0) {
                 project.images.forEach(image => {
                     var formattedImage = HTMLprojectImage.replace("%data%", image);
@@ -197,15 +190,6 @@ var projects = {
         });
     }
 };
-
-var myRole = HTMLheaderRole.replace("%data%", bio.role);
-$("#header").prepend(myRole);
-var myName = HTMLheaderName.replace("%data%", bio.name);
-$("#header").prepend(myName);
-var myBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
-$("#header").append(myBioPic);
-var myWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-$("#header").append(myWelcomeMsg);
 
 bio.display();
 
