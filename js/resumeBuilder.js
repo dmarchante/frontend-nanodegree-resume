@@ -77,7 +77,7 @@ var education = {
             var formattedSchoolDate = HTMLschoolDates.replace("%data%", school.dates);
             var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
             var formattedDateLocation = formattedLocation + formattedSchoolDate;
-            $(".education-entry:last").append(formattedNameDegree, formattedDateLocation)
+            $(".education-entry:last").append(formattedNameDegree, formattedDateLocation);
 
             school.majors.forEach(major => {
                 var formattedMajor = HTMLschoolMajor.replace("%data%", major);
