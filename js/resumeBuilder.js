@@ -4,27 +4,15 @@ var bio = {
     "contacts": {
         "mobile": "239.250.9564",
         "email": "cdmarchante@gmail.com",
-        "github": "https://github.com/dmarchante",
+        "github": "dmarchante",
         "twitter": "@dmarchante",
         "location": "Naples, FL"
     },
-    "welcomeMessage": "Hello",
+    "welcomeMessage": "Hello, I'm David, nice to meet you.",
     "skills": [
         "HTML5", "CSS3", "Bootstrap", "JavaScript", "jQuery", "React", "InDesign", "Photoshop", "Illustrator"
     ],
-    "biopic": [{
-            "bioTitle": "",
-            "bioString": ""
-        },
-        {
-            "bioTitle": "",
-            "bioString": ""
-        },
-        {
-            "bioTitle": "",
-            "bioString": ""
-        }
-    ],
+    "bioPic": "http://via.placeholder.com/200x200",
     displaySkill: function displaySkill() {
         $("#header").append(HTMLskillsStart);
         for (var skill = 0; skill < bio.skills.length; skill++) {
@@ -32,8 +20,29 @@ var bio = {
             var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
             $("#skills:last").append(formattedSkill);
         }
-    }
-}
+    },
+    displayContactsTop: function displaySkill() {
+        var myMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+        $("#topContacts").append(myMobile);
+        var myEmail = HTMLemail.replace("%data%", bio.contacts.email);
+        $("#topContacts").append(myEmail);
+        var myGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+        $("#topContacts").append(myGithub);
+        var myLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+        $("#topContacts").append(myLocation);
+    },
+    displayContactsFooter: function displaySkill() {
+        var myMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+        $("#footerContacts").append(myMobile);
+        var myEmail = HTMLemail.replace("%data%", bio.contacts.email);
+        $("#footerContacts").append(myEmail);
+        var myGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+        $("#footerContacts").append(myGithub);
+        var myLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+        $("#footerContacts").append(myLocation);
+    },
+
+};
 
 var education = {
     "schools": [{
@@ -98,7 +107,7 @@ var education = {
             $(".education-entry:last").append(formattedURL);
         }
     }
-}
+};
 
 var work = {
     "jobs": [{
@@ -148,7 +157,7 @@ var work = {
             $(".work-entry:last").append(formattedDescription);
         }
     }
-}
+};
 
 var projects = {
     "projectsArray": [{
@@ -192,14 +201,20 @@ var projects = {
             }
         }
     }
-}
+};
 
-var myName = HTMLheaderName.replace("%data%", bio.name);
-$("#header").append(myName);
 var myRole = HTMLheaderRole.replace("%data%", bio.role);
-$("#header").append(myRole);
+$("#header").prepend(myRole);
+var myName = HTMLheaderName.replace("%data%", bio.name);
+$("#header").prepend(myName);
+var myBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+$("#header").append(myBioPic);
+var myWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+$("#header").append(myWelcomeMsg);
 
 bio.displaySkill();
+
+bio.displayContactsTop();
 
 education.displaySchool();
 
@@ -208,5 +223,7 @@ education.displayOnline();
 work.display();
 
 projects.display();
+
+bio.displayContactsFooter();
 
 $("#mapDiv").append(googleMap);
