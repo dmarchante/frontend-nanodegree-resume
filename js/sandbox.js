@@ -140,3 +140,21 @@ var bio = {
 //    });
 //};
 //displayWork();
+
+display() {
+    $('#education').append(HTMLschoolStart);
+
+    education.schools.forEach(school => {
+        $('.education-entry').append(HTMLschoolName.replace('%data%', `${school.name}`) + HTMLschoolDegree.replace('%data%', `${school.degree}`));
+        $('.education-entry').append(HTMLschoolDates.replace('%data%', `${school.dates}`));
+        $('.education-entry').append(HTMLschoolLocation.replace('%data%', `${school.location}`));
+        $('.education-entry').append(HTMLschoolMajor.replace('%data%', `${school.majors}`));
+    });
+
+    education.onlineCourses.forEach(course => {
+        $('.education-entry').append(HTMLonlineClasses);
+        $('.education-entry').append(HTMLonlineTitle.replace('%data%', `${course.title}`) + HTMLonlineSchool.replace('%data%', `${course.school}`));
+        $('.education-entry').append(HTMLonlineDates.replace('%data%', `${course.dates}`));
+        $('.education-entry').append(HTMLonlineURL.replace('%data%', `${course.url}`));
+    });
+}
