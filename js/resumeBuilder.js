@@ -162,7 +162,7 @@ var projects = {
         {
             "title": "Project 2",
             "dates": "2015 - 2016",
-            "descriptions": "Lorem ipsum",
+            "description": "Lorem ipsum",
             "images": [
                 "http://via.placeholder.com/150x150",
                 "http://via.placeholder.com/150x150",
@@ -174,17 +174,17 @@ var projects = {
         $("#projects").append(HTMLprojectStart);
 
         projects.projects.forEach(project => {
-            if (projects.images.length > 0) {
-                projects.images.forEach(image => {
+            if (project.images.length > 0) {
+                project.images.forEach(image => {
                     var formattedImage = HTMLprojectImage.replace("%data%", image);
                     $(".project-entry:last").append(formattedImage);
                 });
 
-                var formattedTitle = HTMLprojectTitle.replace("%data%", projects.title);
+                var formattedTitle = HTMLprojectTitle.replace("%data%", project.title);
                 $(".project-entry:last").append(formattedTitle);
-                var formattedDates = HTMLprojectDates.replace("%data%", projects.dates);
+                var formattedDates = HTMLprojectDates.replace("%data%", project.dates);
                 $(".project-entry:last").append(formattedDates);
-                var formattedDescription = HTMLprojectDescription.replace("%data%", projects.description);
+                var formattedDescription = HTMLprojectDescription.replace("%data%", project.description);
                 $(".project-entry:last").append(formattedDescription);
             }
         });
