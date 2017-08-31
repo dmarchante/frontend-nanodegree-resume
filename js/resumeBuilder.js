@@ -48,7 +48,7 @@ var education = {
             "name": "The Pennsylvania State University",
             "location": "State College, PA",
             "degree": "Graduate Certificate",
-            "majors": ["Geographic Infromation Systems"],
+            "majors": ["Geographic Information Systems"],
             "dates": "2018",
             "url": "http://www.psu.edu/"
         },
